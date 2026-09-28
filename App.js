@@ -1,11 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import InscripcionScreen from './screens/pantallaInscripcion';
+import React from 'react';
+import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
+import { InscripcionScreen } from './screens/pantallaInscription';
 
 export default function App() {
   return (
-    <>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" />
       <InscripcionScreen />
-      <StatusBar style="auto" />
-    </>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F8FAFC',
+  },
+});
