@@ -6,7 +6,6 @@ export default function CampoFormulario({
   control,
   name,
   label,
-  error,
   rules,
   ...inputProps
 }) {
@@ -18,19 +17,20 @@ export default function CampoFormulario({
         control={control}
         name={name}
         rules={rules}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={[styles.input, error && styles.inputError]}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            placeholderTextColor="#9AA0A6"
-            {...inputProps}
-          />
+        render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
+          <>
+            <TextInput
+              style={[styles.input, error && styles.inputError]}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholderTextColor="#9AA0A6"
+              {...inputProps}
+            />
+            {error ? <Text style={styles.errorText}>{error.message}</Text> : null}
+          </>
         )}
       />
-
-      {error ? <Text style={styles.errorText}>{error}</Text> : null}
     </View>
   );
 }
